@@ -9,6 +9,10 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/parser').get(async (req, res) => {
+    if (!('x-api-key' in req.headers) || req.headers['x-api-key'] !== process.env.TOKEN) {
+      res.status(401)
+      return res.json({message: '401 - Not Authenticated'})
+    }
     let result = { message: 'No URL was provided' };
     if (req.query.url) {
         try {
