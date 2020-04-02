@@ -3,11 +3,13 @@ This a fork of the dockerized [Mercury Parser API](https://github.com/HenryQW/me
 
 The Klue Mercury Parser Api is exposed at: [URL](https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app)
 
-## Build/Run
+## Build/Run Locally
+- Checkout the `master` branch
+- Build app:
 ```bash
 docker build -t gcr.io/klue-1265/klue-mercury-parser-api .
 ```
-then
+- Run app locally:
 ```bash
 docker run -p 3000:3000 -e TOKEN=<MY-API-KEY> -d gcr.io/klue-1265/klue-mercury-parser-api:latest
 ```
