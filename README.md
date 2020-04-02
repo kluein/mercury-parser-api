@@ -8,41 +8,35 @@ This a fork of the dockerized [Mercury Parser API](https://github.com/HenryQW/me
 
 The deployed version of the Klue Mercury Parser api can be accessed at: [URL](https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app)
 
-The request must include a valid `x-api-key` header. Please ask Bjorn for the key. See the example below:
-
-```
-curl --request GET 'https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app/parser?url=https://www.bbc.co.uk/news/science-environment-35876621' \
---header 'x-api-key: MY-API-KEY'
-```
-
 ## Deploy
 
 ### Pull And Run
 
 ```bash
-docker run -p 3000:3000 -d wangqiru/mercury-parser-api
+docker run -p 3000:3000 -d gcr.io/klue-1265/klue-mercury-parser-api
 ```
 
 ### Build Your Own
 
 ```bash
-docker build -t mercury-parser-api .
+docker build -t gcr.io/klue-1265/klue-mercury-parser-api .
 ```
 
 then
 
 ```bash
-docker run -p 3000:3000 -d mercury-parser-api
+docker run -p 3000:3000 -e TOKEN=<MY-API-KEY> -d gcr.io/klue-1265/klue-mercury-parser-api:latest
 ```
 
 ## Usage
 
 GET /parser?url=[required:url]&contentType=[optional:contentType]&headers=[optional:url-encoded-headers]
 
+The request must include a valid `x-api-key` header. Please ask Bjorn for the key. See the example below:
 ```bash
-curl localhost:3000/parser?url=https://www.bbc.co.uk/news/science-environment-35876621
+curl --request GET 'https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app/parser?url=https://www.bbc.co.uk/news/science-environment-35876621' \
+--header 'x-api-key: MY-API-KEY'
 ```
-
 Response
 
 ```json
@@ -72,5 +66,3 @@ Licensed under either of the below, at your preference:
   ([LICENSE-APACHE](http://www.apache.org/licenses/LICENSE-2.0))
 - MIT license
   ([LICENSE-MIT](http://opensource.org/licenses/MIT))
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHenryQW%2Fmercury-parser-api.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHenryQW%2Fmercury-parser-api?ref=badge_large)
