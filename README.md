@@ -1,7 +1,7 @@
 # Mercury Parser API
-This a fork of the dockerized [Mercury Parser API](https://github.com/HenryQW/mercury-parser-api). In order to use this as a drop-in replacement in [metaurl](https://github.com/kluein/metaurl/blob/master/lib/metaurl/readability_page.rb), we added header-based authentication through a static token (see [authentication commit](https://github.com/kluein/mercury-parser-api/commit/ac3861692104f9630b5f6bd64039f9c6b84c0b59)).
+This a fork of the dockerized [Mercury Parser API](https://github.com/HenryQW/mercury-parser-api). To use this as a drop-in replacement in [metaurl](https://github.com/kluein/metaurl/blob/master/lib/metaurl/readability_page.rb), we added header-based authentication through a static token (see [authentication commit](https://github.com/kluein/mercury-parser-api/commit/ac3861692104f9630b5f6bd64039f9c6b84c0b59)).
 
-The deployed version of the Klue Mercury Parser api can be accessed at: [URL](https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app)
+The Klue Mercury Parser Api is exposed at: [URL](https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app)
 
 ## Build/Run
 ```bash
@@ -54,12 +54,3 @@ docker push gcr.io/klue-1265/klue-mercury-parser-api
 
 ## Metrics and Logs
 - Go to [Google Cloud Run Service for Klue Mercury Parser API](https://console.cloud.google.com/run/detail/us-east1/klue-mercury-parser-api/metrics?organizationId=129617779887&project=klue-1265)
-
-## License
-
-Licensed under either of the below, at your preference:
-
-- Apache License, Version 2.0
-  ([LICENSE-APACHE](http://www.apache.org/licenses/LICENSE-2.0))
-- MIT license
-  ([LICENSE-MIT](http://opensource.org/licenses/MIT))
