@@ -1,35 +1,19 @@
 # Mercury Parser API
-
-This repo provides a dockerized drop-in replacement for the [Mercury Parser](https://github.com/postlight/mercury-parser) API.
-
-## PLEASE READ
-
 This a fork of the dockerized [Mercury Parser API](https://github.com/HenryQW/mercury-parser-api). In order to use this as a drop-in replacement in [metaurl](https://github.com/kluein/metaurl/blob/master/lib/metaurl/readability_page.rb), we added header-based authentication through a static token (see [authentication commit](https://github.com/kluein/mercury-parser-api/commit/ac3861692104f9630b5f6bd64039f9c6b84c0b59)).
 
 The deployed version of the Klue Mercury Parser api can be accessed at: [URL](https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app)
 
-## Deploy
-
-### Pull And Run
-
-```bash
-docker run -p 3000:3000 -d gcr.io/klue-1265/klue-mercury-parser-api
-```
-
-### Build Your Own
-
+## Build/Run
 ```bash
 docker build -t gcr.io/klue-1265/klue-mercury-parser-api .
 ```
-
 then
-
 ```bash
 docker run -p 3000:3000 -e TOKEN=<MY-API-KEY> -d gcr.io/klue-1265/klue-mercury-parser-api:latest
 ```
 
 ## Usage
-
+Request:
 GET /parser?url=[required:url]&contentType=[optional:contentType]&headers=[optional:url-encoded-headers]
 
 The request must include a valid `x-api-key` header. Please ask Bjorn for the key. See the example below:
@@ -37,8 +21,7 @@ The request must include a valid `x-api-key` header. Please ask Bjorn for the ke
 curl --request GET 'https://klue-mercury-parser-api-44dzajcu4a-ue.a.run.app/parser?url=https://www.bbc.co.uk/news/science-environment-35876621' \
 --header 'x-api-key: MY-API-KEY'
 ```
-Response
-
+Response:
 ```json
 {
     "title": "Ash tree set for extinction in Europe",
@@ -57,6 +40,20 @@ Response
     "rendered_pages": 1
 }
 ```
+
+## Deployment
+- Build a new version:
+```bash
+docker build -t gcr.io/klue-1265/klue-mercury-parser-api .
+```
+- Push new version to Google container registry
+```bash
+docker push gcr.io/klue-1265/klue-mercury-parser-api
+```
+- Create new revision in [Google Cloud Run Service for Klue Mercury Parser API](https://console.cloud.google.com/run/detail/us-east1/klue-mercury-parser-api/metrics?organizationId=129617779887&project=klue-1265)
+
+## Metrics and Logs
+- Go to [Google Cloud Run Service for Klue Mercury Parser API](https://console.cloud.google.com/run/detail/us-east1/klue-mercury-parser-api/metrics?organizationId=129617779887&project=klue-1265)
 
 ## License
 
